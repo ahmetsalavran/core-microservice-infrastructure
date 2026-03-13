@@ -1,14 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.saga</groupId>
-    <artifactId>saga-ms</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.7</version>
+    <relativePath/>
   </parent>
 
+  <groupId>com.saga</groupId>
   <artifactId>core-microservice-infrastructure</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
+
+  <properties>
+    <java.version>17</java.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -24,7 +33,6 @@
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- config metadata (optional) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
