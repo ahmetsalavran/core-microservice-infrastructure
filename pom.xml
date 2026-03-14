@@ -11,7 +11,7 @@
   </parent>
 
   <groupId>com.saga</groupId>
-  <artifactId>core-microservice-infrastructure</artifactId>
+  <artifactId>core-infrastructure</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 

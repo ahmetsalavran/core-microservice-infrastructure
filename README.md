@@ -1,4 +1,4 @@
-# core-microservice-infrastructure
+# core-infrastructure
 
 Bu paket, mikroservislerde ortak kullanılan güvenilirlik bileşenlerini içerir:
 - `idempotency` (tekrarlanan event/istekleri tekilleştirme),
