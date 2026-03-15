@@ -10,7 +10,7 @@
     <relativePath/>
   </parent>
 
-  <groupId>com.saga</groupId>
+  <groupId>com.ms</groupId>
   <artifactId>core-infrastructure</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
