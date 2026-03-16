@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Bean;
 public class OutboxAutoConfiguration {
 
     @Bean
-    @ConditionalOnBean(OutboxEventRepository.class)
     public OutboxEventService outboxEventService(OutboxEventRepository repository) {
         return new OutboxEventService(repository);
     }
@@ -35,7 +34,7 @@ public class OutboxAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean({OutboxJobPublisher.class, OutboxQueue.class, OutboxEventRepository.class})
+    @ConditionalOnBean({OutboxJobPublisher.class, OutboxQueue.class})
     public OutboxStartupLoader outboxStartupLoader(OutboxEventRepository outboxEventRepository, OutboxQueue outboxQueue) {
         return new OutboxStartupLoader(outboxEventRepository, outboxQueue);
     }

@@ -4,7 +4,6 @@ import com.ms.core.infrastructure.idempotency.aspect.IdempotencyAspect;
 import com.ms.core.infrastructure.idempotency.repo.ProcessedEventRepository;
 import com.ms.core.infrastructure.idempotency.support.SpelKeyResolver;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -22,7 +21,6 @@ public class IdempotencyAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean(ProcessedEventRepository.class)
     public IdempotencyAspect idempotencyAspect(ProcessedEventRepository repository, SpelKeyResolver spel) {
         return new IdempotencyAspect(repository, spel);
     }

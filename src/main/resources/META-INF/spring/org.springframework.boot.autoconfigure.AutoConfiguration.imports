@@ -1,3 +1,4 @@
+com.ms.core.infrastructure.persistence.config.InfrastructureJpaAutoConfiguration
 com.ms.core.infrastructure.idempotency.config.IdempotencyAutoConfiguration
 com.ms.core.infrastructure.idempotency.WebInfraAutoConfiguration
 com.ms.core.infrastructure.outbox.config.OutboxAutoConfiguration
