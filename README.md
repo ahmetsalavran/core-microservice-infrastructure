@@ -5,6 +5,24 @@ Bu paket, mikroservislerde ortak kullanılan güvenilirlik bileşenlerini içeri
 - `outbox` (DB yazımı ile event yayımını güvenli ayırma),
 - `after-commit` yardımcıları (ack/publish işlemlerini commit sonrasına taşıma).
 
+## E-commerce için neyi çözer?
+
+Bu kütüphane özellikle event-driven e-commerce akışlarında ortaya çıkan şu problemleri çözmek için tasarlanmıştır:
+
+- sipariş onayı event'i iki kez gelirse stok veya ödeme işleminin ikinci kez çalışmasını engellemek,
+- iş verisi DB'ye yazılmışken Kafka publish başarısız olursa veriyi kaybetmemek,
+- Kafka mesajını çok erken `ack` verip, DB transaction rollback olduğunda veri tutarsızlığı oluşturmamak,
+- order, inventory ve payment gibi servislerde aynı güvenilirlik mantığını tekrar tekrar yazmamak.
+
+Örnek kullanım alanları:
+
+- `order-service`: sipariş onayı sonrası outbox kaydı oluşturup event'i güvenli şekilde publish etmek,
+- `inventory-service`: aynı `OrderConfirmedEvent` tekrar gelse bile stok düşümünü tek sefer yapmak,
+- `payment-service`: duplicate ödeme event'lerinde aynı tahsilat etkisini ikinci kez oluşturmamak,
+- `product-listing-service` ve `user-service`: ortak request-id, exception handling ve web altyapısını paylaşmak.
+
+Kısacası bu paket, e-commerce sistemlerinde sık görülen `duplicate event`, `lost publish`, `early ack`, `cross-service reliability` problemlerini ortak ve tekrar kullanılabilir şekilde çözmek için konumlanır.
+
 ## Idempotentlik (DB seviyesi garanti)
 
 İdempotentlik sadece uygulama belleğinde değil, **veritabanı seviyesinde** sağlanır.
